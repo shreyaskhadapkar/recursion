@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration</title>
-</head>
-<div class="head">
+{% extends 'base2.html' %}
+
+{% block body %}
+<div class="class="jumbotron" style="margin-top: 140px; width: 90%;margin-left: auto;margin-right: auto;">
+<div class="card  mx-auto" style="width:60%;border-radius: 10px; align-items: center;">
+  <div class="head">
     <header>
-        <h1>REGISTER YOURSELF</h1>
+        <h1 class="my-4">REGISTER YOURSELF</h1>
       </header>
       </div>
 
@@ -15,14 +13,17 @@
 	<div class="form">
 	  <form method='POST' action='' class="login-form">
 		{% csrf_token %}
-        <input name='username' type='text' placeholder="name">
-        <input name='password' type='password' placeholder="password">
-        <input type='submit' >
+        <input class="form-control mb-4" style="width: 100%;" name='username' type='text' placeholder="name">
+        <input class="  form-control mb-4" style="width: 100%;"name='password' type='password' placeholder="password">
+        <input type='submit' class="btn btn-primary">
         <p class="message">Have an account? <a href="http://127.0.0.1:8000/auth/login/">Log in</a></p>
 	  </form>
 	</div>
+</div>
+</div>
+
   </div>
-</html>
+{% endblock body %}
 <style> @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 .head
 {
