@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% load static %}
+<!-- 
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+	<title>The Plaza - eCommerce Template</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="The Plaza eCommerce Template">
+	<meta name="keywords" content="plaza, eCommerce, creative, html">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+  <!-- Favicon -->  
+  {% block link %}
+  <link href="img/favicon.ico" rel="shortcut icon"/>
+
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="{% static 'logisticsView/css/bootstrap.min.css' %}"/>
+	<link rel="stylesheet" href="{% static 'logisticsView/css/font-awesome.min.css' %}"/>
+	<link rel="stylesheet" href="{% static 'logisticsView/css/owl.carousel.css' %}"/>
+	<!-- <link rel="stylesheet" href="{% static 'logisticsView/css/styles.css' %}"/>
+	<link rel="stylesheet" href="{% static 'logisticsView/css/animate.css' %}"/> -->
+
+
+	<!--[if lt IE 9]>
+	  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	  `   Page -->   
+  {% endblock link %} 
+	                                
+<!-- </head> -->
+
+	
+     <!-- <body> -->
+      {% block body %}
+      <div class="jumbotron jumbotron-fluid bg-dark" style="margin-top: 80px; margin-left:10%;margin-right: 10%;">
+        <div class="card" style="width: 80%;margin-left: 10%;">
+          <form action='' method='POST'>
+            {% csrf_token %}
+            <div class="card">
+                <button btn-primary name='add'> Add</button>
+            </div>
+          </form>
+           
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Product ID</th>
+                    <th scope="col">Product Name</th>
+                    <th scope="col">Rate</th>
+                    <th scope="col">Available Quantity</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for i in data %}
+                <form action='' method='POST'>
+                  {% csrf_token %}
+                    <tr>
+                        <th scope="row">{{i.product_id}}</th>
+                        <td>{{ i.product_name}}</td>
+                        <td>{{ i.rate}}</td>
+                        <td>{{ i.available_quantity}}</td>
+                        <input type='hidden' name='id' value='{{i.product_id}}'>
+                        <td><button class="btn btn-success" name='update'>Update</button></td>
+                        <td><button class="btn btn-danger" name='delete'>Delete</button></td>
+                    </tr>
+                  </form>
+                {% endfor %}
+
+                </tbody>
+              </table>
+        
+          </div>
+    </div>
+      {% endblock body %}
+   
+
+	<!--====== Javascripts & Jquery ======-->
+	<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'js/mixitup.min.js' %}"></script>
+	<script src="{% static 'js/sly.min.js' %}"></script>
+	<script src="{% static 'js/jquery.nicescroll.min.js' %}"></script>
+	<script src="{% static 'js/main.js' %}"></script>
+    <!-- </body>
+</html> -->
+
