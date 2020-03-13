@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProductAdd</title>
+</head>
+<body>
+    <form action='' method='POST'>
+        {% csrf_token %}
+        <input name='product_name' type='text' placeholder="Product Name" >
+        <input name='rate' type='number' placeholder="Rate" >
+        <input name='available_quantity' type='number' placeholder="Available Quantity" >
+        <input type='submit' value='submit'>
+    </form>
+</body>
+</html>
