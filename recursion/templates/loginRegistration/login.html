@@ -1,27 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-</head>
-<div class="head">
-    <header>
-        <h1>LOGIN HERE</h1>
-      </header>
-      </div>
-<div class="login-page">
-	<div class="form">
-	  <form method='POST' action='' class="login-form">
-		{% csrf_token %}
-        <input name='username' type='text' placeholder="name">
-        <input name='password' type='password' placeholder="password">
-        <input type='submit' >
-		<p class="message">Not registered? <a href="http://127.0.0.1:8000/auth/registration/">Create an account</a></p>
-	  </form>
-	</div>
+{% extends 'base2.html' %}
+
+{% block body %}
+<div class="jumbotron" style="margin-top: 140px; width: 90%;margin-left: auto;margin-right: auto;">
+  <div class="card  mx-auto" style="width:60%;border-radius: 10px; align-items: center;">
+    <div class="head" >
+      <header>
+          <h1 class="my-4">LOGIN HERE</h1>
+        </header>
+        </div>
+  <div class="login-page">
+    <div class="form form-group">
+      <form method='POST' action='' class="login-form">
+      {% csrf_token %}
+          <input class="form-control mb-4" style="width: 100%;" name='username' type='text' placeholder="name" >
+          <input class="form-control mb-4" style="width: 100%;"name='password' type='password' placeholder="password">
+          <input type='submit' class="btn btn-primary " style="align-self: center;margin-left: auto;margin-right: auto;">
+      <!-- <p class="message my-4" style="margin-left: 20%;">Not registered? <a href="http://127.0.0.1:8000/auth/registration/">Create an account</a></p> -->
+      </form>
+    </div>
+    </div>
   </div>
- 
+</div>
+ {% endblock body%}
  <style> @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
 .head
