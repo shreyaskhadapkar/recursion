@@ -1,15 +1,16 @@
-{% extends 'base.html' %}
+{% extends 'base2.html' %}
 
 {% block body %}
 
-<div class="jumbotron ml-5 mx-5" style="margin-top: 100px;">
-    <div class="card">
+<div class="jumbotron ml-5 mx-5 justify-content-center" style="margin-top: 150px;">
+    <div class="card " style="width: 50rem; margin-left: auto;margin-right: auto;">
         <form action='' method='POST'>
             {% csrf_token %}
-            <input name='product_name' class="form-control" type='text' placeholder="Product Name" value='{{data.product_name}}'>
-            <input name='rate' class="form-control" type='number' placeholder="Rate" value={{data.rate}}>
-            <input name='available_quantity' class="form-control" type='number' placeholder="Available Quantity" value={{data.available_quantity}}>
-            <input type='submit' class="btn btn-primary" value='submit'>
+            <input name='product_name' class="form-control my-4" type='text' placeholder="Product Name" value='{{data.product_name}}' style="width: 80% ;margin-left: auto;margin-right: auto;">
+            <input name='rate' class="form-control my-4" type='number' placeholder="Rate" value={{data.rate}} style="width: 80% ;margin-left: auto;margin-right: auto;">
+            <input name='available_quantity my-4' class="form-control" type='number' placeholder="Available Quantity" value={{data.available_quantity}} style="width: 80% ;margin-left: auto;margin-right: auto;">
+            <!-- <input type='submit' class="btn btn-primary" value='submit' style="margin-left: auto;margin-right: auto;"> -->
+            <button type="submit" class="btn btn-primary my-4 justify-content-center" value='submit' style="margin-left: 45%;margin-right: auto;">Submit</button>
         </form>
     </div>
 </div>
