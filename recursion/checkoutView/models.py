@@ -6,4 +6,4 @@ class Order(models.Model):
     cart_id = models.ForeignKey(Cart,on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.str(order_id)
+        return str(self.order_id)
