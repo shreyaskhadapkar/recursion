@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def index(request):
-    return render(request,'index.html')
+    return render(request,'loginRegistration/index.html')
 
 
 @login_required
@@ -29,7 +29,7 @@ def login(request):
         else:
             print("Someone tried to login and failed.")
             
-    return render(request,'login.html')
+    return render(request,'loginRegistration/login.html')
 
 def registration(request):
     if request.method=='POST':
@@ -37,4 +37,4 @@ def registration(request):
         password = request.POST.get('password')
         user = User.objects.create_user(username=username,password=password)
         return redirect(reverse('login'))
-    return render(request,'registration.html')
+    return render(request,'loginRegistration/registration.html')
