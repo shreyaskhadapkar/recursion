@@ -5,6 +5,7 @@
 	{% extends 'base2.html' %}
 
 	{% block body%}
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js" ></script>	
   <!-- </head> -->
 
@@ -23,7 +24,26 @@
             }
         );
         scanner.addListener('scan', function(content) {
-            alert('scanned the content -> ' + content);
+			alert('scanned the content -> ' + content);
+			console.log(content)
+			data = {
+				'key':content
+			}
+			$.ajax({
+				"url": "http://127.0.0.1:8000/userView/scanner/",
+				"type": "post",
+				"data": data, //Data that we prepared previously
+			   "success": success_callback,
+			   "error": error_callback
+			})
+			function success_callback(result){
+				return result
+			}
+			function error_callback(result){
+				return result
+			}
+		
+			
             window.open(content, "_blank");
         });
         Instascan.Camera.getCameras().then(cameras => 
