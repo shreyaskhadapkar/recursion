@@ -20,29 +20,33 @@
                 </thead>
                 <tbody>
                     <!--loop part-->
+                    {% for i in data %}
                   <tr>
                     <!-- <th scope="row">1</th> -->
-                    <td>pname</td>
-                    <td>45</td>
+                    <td>{{i.product_name}}</td>
+                    <td>{{i.rate}}</td>
                     <td>
                         <div class="input-group input-group-sm mb-3 col-3" >
                             <!-- <div class="input-group-prepend">
                               <span class="input-group-text" id="inputGroup-sizing-sm"></span>
                             </div> -->
-                            <input type="number" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                            <input type="number"  aria-label="Small" aria-describedby="inputGroup-sizing-sm" value='{{ i.item_quantity }}'>
                           </div>
                     </td>
-                    <td>100</td>
-                    <td>2</td>
+                    <td>{{i.cost}}</td>
+                    <td>{{i.available_quantity}}</td>
                   </tr>
-                  
+                  {% endfor %}
                 </tbody>
               </table>
         </div>
         <div class="col-4">
-            <h1 class="my-3 ml-0">Total:</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam minima, sapiente quisquam blanditiis necessitatibus dicta illo ducimus quae doloremque dolorum hic! Dolor corporis necessitatibus non placeat porro consectetur quam consequatur.</p>
-            <button class="btn btn-primary">Submit</button>
+            <h1 class="my-3 ml-0">Total:{{ Total }}</h1>
+            <p>Order_id = {{ order_id }}</p>
+            <form action='' method='POST'>
+              {% csrf_token %}
+              <input  class="btn btn-primary" type='submit' value='Submit'>
+            </form> 
         </div>
     </div>
 </div>

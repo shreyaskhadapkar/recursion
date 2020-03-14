@@ -6,6 +6,7 @@ from logisticsView.models import Product
 from .models import Cart,CartItem
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from checkoutView.models import Order
 
 
 def homepage(request):
@@ -31,9 +32,20 @@ def scanner(request):
 
 @login_required(login_url='{% url "login" %}')
 def cart(request):
+    params= {}
     user = request.user
     cart = Cart.objects.get(user_id=user)
     cart_item = CartItem.objects.filter(cart_id=cart.cart_id)
+
+    if request.method == 'POST':
+        if Order.objects.filter(cart_id = cart):
+            pass
+        else:
+            Order.objects.create(cart_id = cart)
+        order_id = Order.objects.get(cart_id = cart)
+        params['order_id'] = order_id
+
+
     listData = []
     sum = 0
     for i in cart_item:
@@ -42,9 +54,11 @@ def cart(request):
         data['rate'] = i.product_id.rate
         data['item_quantity'] = i.item_quantity
         data['cost'] = data['rate']*data['item_quantity']
+        data['available_quantity'] = i.product_id.available_quantity
         listData.append(data)
 
         sum = sum + data['cost']
+    params['data'] = listData
+    params['Total'] = sum
 
-    params = { 'data':listData, 'Total':sum }
     return render(request,'userView/cart.html',params)
