@@ -23,6 +23,8 @@ def login(request):
         if user:
             if user.is_active:
                 auth_login(request,user)
+                if user.username == 'srajan':
+                    return redirect(reverse('orderList'))
                 return redirect(reverse('homepage'))
             else:
                 return HttpResponse("Your account was inactive.")
