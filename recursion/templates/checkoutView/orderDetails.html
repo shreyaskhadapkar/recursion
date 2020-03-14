@@ -41,9 +41,11 @@
     </div>
 </div>
 
-<div style="margin-left: 75%;margin-right: auto;margin-top: 145px;">
-    <button type="submit" class="btn btn-primary my-4 justify-content-center" value='submit'  style="margin-left: 50%;margin-right:30%;margin-top:85%;" >
-        Final Checkout
-    </button>
+<div style="margin-left: 75%;margin-right: auto;margin-top: 01%;">
+    <form action='' method='POST'>
+      {% csrf_token %}
+      <input  class="btn btn-primary" type='submit' value='Final CheckOut' style="margin-left: 50%;margin-right:30%;margin-top:5%; margin-bottom: 5%;">
+    </form>
+    
 </div>
 {% endblock body %}

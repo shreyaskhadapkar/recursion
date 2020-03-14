@@ -38,6 +38,11 @@ def orderDetails(request,slug):
     params = dict()
     listData = []
     sumTotal = 0
+
+    if request.method == 'POST':
+        Cart.objects.get(cart_id=slug).delete()
+        return redirect(reverse('orderList')) 
+
     for i in cart:
         data = {}
         id = i.product_id.product_id
