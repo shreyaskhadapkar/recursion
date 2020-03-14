@@ -7,11 +7,11 @@ from .models import Cart,CartItem
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
-@login_required(login_url='{% url "login" %}')
+
 def homepage(request):
     return render(request,'userView/Homepage.html')
 
-@login_required(login_url='{% url "login" %}')
+@login_required(login_url='/auth/login')
 @csrf_exempt
 def scanner(request):
     global flag
