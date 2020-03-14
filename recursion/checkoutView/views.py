@@ -54,6 +54,6 @@ def orderDetails(request,slug):
         data['totalRate']=totalRate
         sumTotal += totalRate
         listData.append(data)
-    params = {'data':listData,'sumTotal':sumTotal}
+    params = {'data':listData,'sumTotal':sumTotal,'id':id}
     print(sumTotal)
     return render(request,'checkoutView/orderDetails.html',params)

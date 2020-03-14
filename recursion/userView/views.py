@@ -44,6 +44,15 @@ def cart(request):
             Order.objects.create(cart_id = cart)
         order_id = Order.objects.get(cart_id = cart)
         params['order_id'] = order_id
+        cartItems = CartItem.objects.filter(cart_id = cart)
+        for i in cartItems:
+            print('cart Items pid ',i.product_id)
+            product = Product.objects.get(product_id = i.product_id.product_id)
+            new_quantity = product.available_quantity - i.item_quantity
+            print('cart Items quantity ',i.item_quantity)
+            print('New New New' , new_quantity)
+            product.available_quantity = new_quantity
+            product.save()
 
 
     listData = []
