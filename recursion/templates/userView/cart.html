@@ -1,11 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cart</title>
-</head>
-<body>
-    <h1>Cart</h1>
-</body>
-</html>
+{% extends 'base2.html' %}
+{% block body %}
+
+<div class="card mb-4" style="width: 75%;margin-right: auto;margin-left: auto;margin-top: 120px;">
+
+    <div class="row border-right">
+        
+        <div class="col-8 mx-auto">
+            <h3 class="ml-3 my-3">My Shopping Cart:</h3>
+            <table class="table border-0">
+                <thead class="bg-light">
+                  <tr>
+                    <!-- <th scope="col">#</th> -->
+                    <th scope="col">Product</th>
+                    <th scope="col">Qty:</th>
+                    <th scope="col">Amount:</th>
+                    <th scope="col">Available:</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <!--loop part-->
+                  <tr>
+                    <!-- <th scope="row">1</th> -->
+                    <td>Mark</td>
+                    <td>
+                        <div class="input-group input-group-sm mb-3 col-3" >
+                            <!-- <div class="input-group-prepend">
+                              <span class="input-group-text" id="inputGroup-sizing-sm"></span>
+                            </div> -->
+                            <input type="number" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                          </div>
+                    </td>
+                    <td>@mdo</td>
+                    <td>2</td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+        </div>
+        <div class="col-4">
+            <h1>Total:</h1>
+            
+            <button class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+</div>
+
+{% endblock body%}
