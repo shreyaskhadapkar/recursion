@@ -21,4 +21,5 @@ urlpatterns = [
     path('auth/',include('loginAndRegistration.urls')),
     path('logistics/',include('logisticsView.urls')),
     path('checkout/',include('checkoutView.urls')),
+    path('userView/',include('userView.urls')),
 ]

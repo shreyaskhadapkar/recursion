@@ -9,26 +9,29 @@ from django.urls import reverse
 
 # @login_required
 def orderList(request):
-    if request.method == 'POST':
-        cart_id = request.POST.get('cart_id')
-        return redirect(reverse('orderDetails',kwargs={'slug':cart_id}))
+    if request.user.username == 'srajan':
+        if request.method == 'POST':
+            cart_id = request.POST.get('cart_id')
+            return redirect(reverse('orderDetails',kwargs={'slug':cart_id}))
 
-    print('Printed in orderList')
-    params = dict()
-    orders = Order.objects.all()
+        print('Printed in orderList')
+        params = dict()
+        orders = Order.objects.all()
 
-    listData = []
-    for i in orders:
-        data = {}
-        name = Cart.objects.get(cart_id = i.cart_id.cart_id)
-        data['order_id'] = i.order_id
-        data['cart_id'] = i.cart_id.cart_id
-        data['user_name'] = name.user_id
-        listData.append(data)
+        listData = []
+        for i in orders:
+            data = {}
+            name = Cart.objects.get(cart_id = i.cart_id.cart_id)
+            data['order_id'] = i.order_id
+            data['cart_id'] = i.cart_id.cart_id
+            data['user_name'] = name.user_id
+            listData.append(data)
 
-    params = {'data':listData}
-    print(listData)
-    return render(request,'checkoutView/orderlist.html',params) 
+        params = {'data':listData}
+        print(listData)
+        return render(request,'checkoutView/orderlist.html',params) 
+    else:
+        return HttpResponse("You dont belong here")
 
 def orderDetails(request,slug):
     cart = CartItem.objects.filter(cart_id=slug)
