@@ -47,6 +47,11 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav text-uppercase ml-auto">
           <li class="nav-item">
+          
+              <a class="nav-link js-scroll-trigger" href="{% url 'homepage' %}">Home</a>
+             
+          </li>
+          <li class="nav-item">
             {% if user.is_authenticated %}
               {% if user.username != 'srajan' %}
               <a class="nav-link js-scroll-trigger" href="{% url 'cart' %}">Cart</a>

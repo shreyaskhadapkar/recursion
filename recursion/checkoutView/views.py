@@ -38,6 +38,7 @@ def orderDetails(request,slug):
     params = dict()
     listData = []
     sumTotal = 0
+    orderId = Order.objects.get(cart_id=slug).order_id
 
     if request.method == 'POST':
         Cart.objects.get(cart_id=slug).delete()
@@ -59,6 +60,6 @@ def orderDetails(request,slug):
         data['totalRate']=totalRate
         sumTotal += totalRate
         listData.append(data)
-    params = {'data':listData,'sumTotal':sumTotal,'id':id}
+    params = {'data':listData,'sumTotal':sumTotal,'id':orderId}
     print(sumTotal)
     return render(request,'checkoutView/orderDetails.html',params)

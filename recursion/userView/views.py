@@ -38,6 +38,14 @@ def cart(request):
     cart_item = CartItem.objects.filter(cart_id=cart.cart_id)
 
     if request.method == 'POST':
+        if 'delete' in request.POST:
+            product_name = request.POST.get('id')
+            product = Product.objects.get(product_name = product_name)
+            print(CartItem.objects.all())
+            CartItem.objects.filter(product_id = product.product_id).delete()
+            print(product_name)
+            pass
+
         if Order.objects.filter(cart_id = cart):
             pass
         else:
@@ -46,11 +54,8 @@ def cart(request):
         params['order_id'] = order_id
         cartItems = CartItem.objects.filter(cart_id = cart)
         for i in cartItems:
-            print('cart Items pid ',i.product_id)
             product = Product.objects.get(product_id = i.product_id.product_id)
             new_quantity = product.available_quantity - i.item_quantity
-            print('cart Items quantity ',i.item_quantity)
-            print('New New New' , new_quantity)
             product.available_quantity = new_quantity
             product.save()
 

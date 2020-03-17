@@ -15,6 +15,14 @@ function updateCountdown()
     countdownEl.innerHTML = ''+minutes+':'+seconds+'';
 
     time--;
+    console.log(time)
     time = time < 0 ? 0 : time; 
 
 }
+
+function redirect(){
+    if(time==0){
+        window.location = "/cart";
+    }
+}
+setTimeout('redirect()',60000)
